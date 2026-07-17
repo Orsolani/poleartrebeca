@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Split Screen Layout</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body, html {
+            height: 100%;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: #333;
+            background-color: #fcfcfc;
+            overflow: hidden; /* Prevents double scrollbars on the main page */
+        }
+
+        /* Container using Flexbox */
+        .container {
+            display: flex;
+            width: 100%;
+            height: 100vh;
+        }
+
+        /* Left Side: Big Photo */
+        .photo-side {
+            flex: 1.2; /* Slightly wider than the text side for visual impact */
+            height: 100%;
+            position: relative;
+        }
+        .photo-side img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Keeps image aspect ratio without stretching */
+            display: block;
+        }
+
+        /* Right Side: Information Panel */
+        .info-side {
+            flex: 1;
+            height: 100%;
+            overflow-y: auto; /* Allows scrolling if the content is longer than the screen */
+            padding: 10% 8%; /* Generous responsive padding */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Vertically centers the text content */
+            background-color: #ffffff;
+        }
+
+        /* Typography & Content Styling */
+        .category {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: #888;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        h1 {
+            font-size: 3rem;
+            line-height: 1.15;
+            color: #111;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+        p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #555;
+            margin-bottom: 2rem;
+        }
+        .cta-btn {
+            display: inline-block;
+            align-self: flex-start; /* Keeps the button from stretching */
+            padding: 0.9rem 2rem;
+            background-color: #111;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+        }
+        .cta-btn:hover {
+            background-color: #333;
+        }
+
+        /* Responsive Design: Stacks vertically on tablets and mobile phones */
+        @media (max-width: 900px) {
+            .container {
+                flex-direction: column;
+                height: auto;
+            }
+            body, html {
+                overflow: auto; /* Restores scrolling on mobile */
+            }
+            .photo-side {
+                height: 50vh; /* Image takes up half the screen height on mobile */
+                flex: none;
+            }
+            .info-side {
+                height: auto;
+                padding: 3rem 2rem;
+                flex: none;
+            }
+            h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Left Side: Image -->
+        <div class="photo-side">
+            <!-- Replace this URL with your local image file path or web URL -->
+            <img src="assets/dsc_3096.JPG" alt="Left Side Visual">
+        </div>
+
+        <!-- Right Side: Information -->
+        <div class="info-side">
+            <span class="category">Pole Dancer</span>
+            <h1>Rebeca Sanchez Soteldo</h1>
+            <p>
+                This is where you place your main copy. The split-screen layout is incredibly effective for landing pages, portfolios, or product showcases because it immediately pairs high-quality imagery with your primary message. 
+            </p>
+            <p>
+                The right-hand container is set to scroll independently if your text content ever exceeds the height of the browser window, ensuring your layout never breaks.
+            </p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

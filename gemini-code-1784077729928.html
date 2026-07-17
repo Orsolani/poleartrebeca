@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POLE DANCE | NYC</title>
+    <style>
+        /* --- ESTILO NYC MINIMALISTA Y OSCURO --- */
+        :root {
+            --bg-color: #0a0a0a;
+            --card-bg: #121212;
+            --text-color: #ffffff;
+            --accent-color: #ff0055; /* Rosa neón sutil para detalles */
+            --gray-muted: #888888;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            padding: 0 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 0;
+        }
+
+        /* --- HERO SECTION (FOTO + BIO) --- */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            align-items: center;
+            margin-bottom: 80px;
+        }
+
+        @media (min-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr 1fr;
+                gap: 60px;
+            }
+        }
+
+        .hero-img-wrapper {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            overflow: hidden;
+            border-radius: 4px;
+            background-color: var(--card-bg);
+        }
+
+        .hero-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(20%) contrast(110%);
+            transition: transform 0.5s ease;
+        }
+
+        .hero-img-wrapper:hover .hero-img {
+            transform: scale(1.03);
+        }
+
+        .bio-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        /* Tipografía brutalista estilo NYC */
+        h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            line-height: 0.9;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        h1 span {
+            color: var(--accent-color);
+        }
+
+        .bio-text {
+            font-size: 1.1rem;
+            color: #dddddd;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        /* --- ENFASIS EN INSTAGRAM --- */
+        .instagram-cta {
+            display: inline-flex;
+            align-items: center;
+            background-color: #ffffff;
+            color: #000000;
+            text-decoration: none;
+            padding: 15px 30px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            border-radius: 0px; /* Bordes rectos para vibras más industriales */
+            transition: all 0.3s ease;
+            width: fit-content;
+        }
+
+        .instagram-cta:hover {
+            background-color: var(--accent-color);
+            color: #ffffff;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 0, 85, 0.2);
+        }
+
+        /* --- GALERÍA DINÁMICA EN GRID --- */
+        .gallery-title {
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+            border-bottom: 1px solid #222;
+            padding-bottom: 10px;
+            color: var(--gray-muted);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-auto-rows: 350px;
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 4px;
+            background-color: var(--card-bg);
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(40%);
+            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        /* Efecto hover interactivo */
+        .gallery-item:hover img {
+            filter: grayscale(0%) scale(1.05);
+        }
+
+        /* Hacer que algunas fotos sean más grandes para romper la monotonía (estilo revista) */
+        @media (min-width: 768px) {
+            .gallery-item.wide {
+                grid-column: span 2;
+            }
+            .gallery-item.tall {
+                grid-row: span 2;
+            }
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            margin-top: 100px;
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid #111;
+        }
+
+        footer p {
+            font-size: 0.8rem;
+            color: var(--gray-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- SECCIÓN PRINCIPAL: BIO & HERO FOTO -->
+        <section class="hero">
+            <div class="hero-img-wrapper">
+                <!-- Foto principal (Reemplazar "src" con tu foto) -->
+                <img class="hero-img" src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&q=80&w=1000" alt="Pole Dancer Portrait">
+            </div>
+            
+            <div class="bio-content">
+                <h1>VALERIE<br><span>STORM</span></h1>
+                <p class="bio-text">
+                    Pole dancer y artista del movimiento basada en Brooklyn, Nueva York. Fusionando la fuerza bruta del fitness de alta intensidad con la fluidez y el estilo del underground neoyorquino. Rompiendo moldes, desafiando la gravedad y redefiniendo el arte del pole vertical.
+                </p>
+                <!-- Botón de Instagram destacado -->
+                <a href="https://instagram.com/tu_usuario" target="_blank" class="instagram-cta">
+                    SÍGUEME EN INSTAGRAM →
+                </a>
+            </div>
+        </section>
+
+        <!-- SECCIÓN DE GALERÍA -->
+        <h2 class="gallery-title">Galería de Movimiento</h2>
+        
+        <div class="gallery-grid">
+            <!-- Item 1 (Normal) -->
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&q=80&w=800" alt="Movimiento">
+            </div>
+            
+            <!-- Item 2 (Ancho) -->
+            <div class="gallery-item wide">
+                <img src="https://images.unsplash.com/photo-1547153760-18fc86324498?auto=format&fit=crop&q=80&w=1200" alt="Vibra NYC">
+            </div>
+            
+            <!-- Item 3 (Alto) -->
+            <div class="gallery-item tall">
+                <img src="https://images.unsplash.com/photo-1504609773096-104ff2c73ba4?auto=format&fit=crop&q=80&w=800" alt="Arte corporal">
+            </div>
+            
+            <!-- Item 4 (Normal) -->
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&q=80&w=800" alt="Estudio">
+            </div>
+
+            <!-- Item 5 (Normal) -->
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&q=80&w=800" alt="Luces de neón">
+            </div>
+
+            <!-- Item 6 (Ancho) -->
+            <div class="gallery-item wide">
+                <img src="https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&fit=crop&q=80&w=1200" alt="Luces de la ciudad">
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <footer>
+            <p>© 2026 VALERIE STORM. HECHO EN NYC.</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>

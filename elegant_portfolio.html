@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VALERIE | Art & Movement</title>
+    <!-- Google Fonts for Editorial Elegance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <style>
+        /* --- ELEGANT EDITORIAL STYLE --- */
+        :root {
+            --bg-color: #fbf9f6;        /* Warm warm-toned soft luxury ivory */
+            --text-dark: #1a1a1a;       /* Deep charcoal for readable luxury */
+            --text-muted: #6e6a64;      /* Soft taupe-grey */
+            --accent-gold: #b3926a;     /* Warm champagne gold */
+            --border-color: #eae5df;    /* Subtle, soft grid lines */
+            --font-serif: 'Cormorant Garamond', serif;
+            --font-sans: 'Montserrat', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            font-family: var(--font-sans);
+            font-weight: 300;
+            line-height: 1.7;
+            padding: 0 40px;
+            letter-spacing: 0.03em;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 0 20px;
+            }
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 80px 0;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-bottom: 120px;
+        }
+
+        @media (min-width: 992px) {
+            .hero {
+                grid-template-columns: 1.1fr 0.9fr;
+                gap: 100px;
+            }
+        }
+
+        .bio-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .subtitle {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            color: var(--accent-gold);
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        h1 {
+            font-family: var(--font-serif);
+            font-size: 4.5rem;
+            font-weight: 300;
+            line-height: 1.05;
+            margin-bottom: 30px;
+            letter-spacing: -0.01em;
+            color: var(--text-dark);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+        }
+
+        .bio-text {
+            font-family: var(--font-serif);
+            font-style: italic;
+            font-size: 1.6rem;
+            line-height: 1.6;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        @media (max-width: 768px) {
+            .bio-text {
+                font-size: 1.3rem;
+            }
+        }
+
+        /* INSTAGRAM CTA */
+        .instagram-cta {
+            display: inline-flex;
+            align-items: center;
+            align-self: flex-start;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            border-bottom: 1px solid var(--text-dark);
+            padding-bottom: 8px;
+            transition: all 0.4s ease;
+        }
+
+        .instagram-cta:hover {
+            color: var(--accent-gold);
+            border-color: var(--accent-gold);
+            padding-left: 10px;
+        }
+
+        /* HERO IMAGE */
+        .hero-img-wrapper {
+            position: relative;
+            width: 100%;
+            height: 650px;
+            overflow: hidden;
+            background-color: #f3f0eb;
+        }
+
+        @media (max-width: 768px) {
+            .hero-img-wrapper {
+                height: 450px;
+            }
+        }
+
+        .hero-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(10%) contrast(95%);
+            transition: transform 1.2s cubic-bezier(0.15, 1, 0.3, 1);
+        }
+
+        .hero-img-wrapper:hover .hero-img {
+            transform: scale(1.04);
+        }
+
+        /* --- SECTION HEADER --- */
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-family: var(--font-serif);
+            font-size: 2.2rem;
+            font-weight: 300;
+            letter-spacing: 0.05em;
+            margin-bottom: 10px;
+        }
+
+        .section-header p {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3em;
+            color: var(--accent-gold);
+        }
+
+        /* --- 32-IMAGE GALLERY GRID --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        @media (min-width: 600px) {
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (min-width: 992px) {
+            .gallery-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 30px;
+            }
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            background-color: #f3f0eb;
+            aspect-ratio: 3 / 4; /* Elegant vertical aspect ratio */
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(15%) sepia(5%);
+            transition: all 0.8s cubic-bezier(0.15, 1, 0.3, 1);
+        }
+
+        .gallery-item:hover img {
+            filter: grayscale(0%) sepia(0%);
+            transform: scale(1.05);
+        }
+
+        /* Subtle overlay on hover */
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(27, 25, 23, 0.08);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+
+        .gallery-item:hover::after {
+            opacity: 1;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            margin-top: 150px;
+            border-top: 1px solid var(--border-color);
+            padding: 60px 0 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-logo {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .footer-instagram {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        .footer-instagram:hover {
+            color: var(--accent-gold);
+        }
+
+        .copyright {
+            font-size: 0.65rem;
+            color: #9c9790;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <!-- HERO SECTION -->
+        <section class="hero">
+            <div class="bio-content">
+                <span class="subtitle">Artistry &amp; Movement</span>
+                <h1>VALERIE STORM</h1>
+                <p class="bio-text">
+                    "La danza vertical como poesía suspendida en el aire. Capturando la fuerza del control físico absoluto mezclada con la delicadeza de la fluidez editorial en el corazón de Manhattan."
+                </p>
+                <a href="https://instagram.com/tu_usuario" target="_blank" class="instagram-cta">
+                    Instagram Portfolio &mdash; @valeriestorm
+                </a>
+            </div>
+            
+            <div class="hero-img-wrapper">
+                <!-- Large Elegant Editorial Portrait -->
+                <img class="hero-img" src="https://images.unsplash.com/photo-1547153760-18fc86324498?auto=format&fit=crop&q=80&w=1000" alt="Valerie Storm Editorial Portrait">
+            </div>
+        </section>
+
+        <!-- GALLERY CONTAINER -->
+        <div class="section-header">
+            <h2>The Visual Archive</h2>
+            <p>Thirty-Two Studies of Grace &amp; Strength</p>
+        </div>
+        
+        <section class="gallery-grid">
+            <!-- 32 beautifully curated movement & editorial photography cards -->
+            <!-- 1 -->
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&q=80&w=600" alt="Study 1">
+            </div>
+            <!-- 2 -->
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&q=80&w=600" alt="Study 2">
+            </div>
+            <!-- 3 -->
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1504609773096-104ff2c73ba4?auto=format&fit=crop&q=80&w=600" alt="Study 3">
+            </div>
+            <!-- 4 -->
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&q=80&w=600" alt="Study 4">
+            </div>
+            <!-- 5 -->
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&q=80&w=600" alt="Study 5">
+            </div>
+            <!-- 6 -->
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&fit=crop&q=80&w=600" alt="Study 6">
+            </div>
+            <!-- 7 -->
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1502224562085-639556652f33?auto=format&fit=crop&q=80&w=600" alt="Study 7">
+            </div>
+            <!-- 8 -->
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&q=80&w=600" alt="Study 8">
+            </div>
+            <!-- 9 -->
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80&w=600" alt="Study 9">
+            </div>
+            <!-- 10 -->
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=600" alt="Study 10">
+            </div>
+            <!-- 11 -->
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1492633423870-43d1cd2775df?auto=format&fit=crop&q=80&w=600" alt="Study 11">
+            </div>
+            <!-- 12 -->
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1488161628813-04466f872be2?auto=format&fit=crop&q=80&w=600" alt="Study 12">
+            </div>
+            <!-- 13 -->
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&q=80&w=600" alt="Study 13">
+            </div>
+            <!-- 14 -->
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&q=80&w=600" alt="Study 14">
+            </div>
+            <!-- 15 -->
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&q=80&w=600" alt="Study 15">
+            </div>
+            <!-- 16 -->
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&q=80&w=600" alt="Study 16">
+            </div>
+            <!-- 17 -->
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&q=80&w=600" alt="Study 17">
+            </div>
+            <!-- 18 -->
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1509319117193-57bab727e09d?auto=format&fit=crop&q=80&w=600" alt="Study 18">
+            </div>
+            <!-- 19 -->
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&q=80&w=600" alt="Study 19">
+            </div>
+            <!-- 20 -->
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1495385794356-153718385c7a?auto=format&fit=crop&q=80&w=600" alt="Study 20">
+            </div>
+            <!-- 21 -->
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&q=80&w=600" alt="Study 21">
+            </div>
+            <!-- 22 -->
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&q=80&w=600" alt="Study 22">
+            </div>
+            <!-- 23 -->
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1485462537746-965f33f7f6a7?auto=format&fit=crop&q=80&w=600" alt="Study 23">
+            </div>
+            <!-- 24 -->
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&q=80&w=600" alt="Study 24">
+            </div>
+            <!-- 25 -->
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1479064555552-3ef4979f8908?auto=format&fit=crop&q=80&w=600" alt="Study 25">
+            </div>
+            <!-- 26 -->
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1481824429379-07aa5e5b0739?auto=format&fit=crop&q=80&w=600" alt="Study 26">
+            </div>
+            <!-- 27 -->
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=600" alt="Study 27">
+            </div>
+            <!-- 28 -->
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=600" alt="Study 28">
+            </div>
+            <!-- 29 -->
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=600" alt="Study 29">
+            </div>
+            <!-- 30 -->
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&q=80&w=600" alt="Study 30">
+            </div>
+            <!-- 31 -->
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&q=80&w=600" alt="Study 31">
+            </div>
+            <!-- 32 -->
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=600" alt="Study 32">
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer>
+            <div class="footer-logo">VALERIE STORM</div>
+            <a href="https://instagram.com/tu_usuario" target="_blank" class="footer-instagram">@valeriestorm</a>
+            <p class="copyright">&copy; 2026 VALERIE STORM. ALL RIGHTS RESERVED.</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
