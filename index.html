@@ -3,137 +3,128 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Split Screen Layout</title>
+    <title>Warming Up | Pole Dance</title>
     <style>
-        /* Reset and Base Styles */
+        :root {
+            --bg-color: #0d0d11;
+            --accent-glow: #ff2a74;
+            --text-light: #ffffff;
+            --text-muted: #8a8a93;
+        }
+
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
-        body, html {
-            height: 100%;
+
+        body {
+            background-color: var(--bg-color);
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            color: #333;
-            background-color: #fcfcfc;
-            overflow: hidden; /* Prevents double scrollbars on the main page */
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            color: var(--text-light);
         }
 
-        /* Container using Flexbox */
-        .container {
-            display: flex;
-            width: 100%;
+        /* Ambient neon line representing the dance pole */
+        .visual-pole {
+            position: absolute;
+            width: 2px;
             height: 100vh;
+            background: linear-gradient(to bottom, transparent, var(--accent-glow), transparent);
+            box-shadow: 0 0 20px var(--accent-glow), 0 0 40px var(--accent-glow);
+            opacity: 0.3;
+            z-index: 1;
         }
 
-        /* Left Side: Big Photo */
-        .photo-side {
-            flex: 1.2; /* Slightly wider than the text side for visual impact */
-            height: 100%;
-            position: relative;
-        }
-        .photo-side img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Keeps image aspect ratio without stretching */
-            display: block;
+        .container {
+            text-align: center;
+            z-index: 2;
+            padding: 20px;
         }
 
-        /* Right Side: Information Panel */
-        .info-side {
-            flex: 1;
-            height: 100%;
-            overflow-y: auto; /* Allows scrolling if the content is longer than the screen */
-            padding: 10% 8%; /* Generous responsive padding */
-            display: flex;
-            flex-direction: column;
-            justify-content: center; /* Vertically centers the text content */
-            background-color: #ffffff;
-        }
-
-        /* Typography & Content Styling */
-        .category {
+        .status-tag {
             font-size: 0.85rem;
             text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: #888;
+            letter-spacing: 0.4em;
+            color: var(--accent-glow);
             margin-bottom: 1rem;
             font-weight: 600;
         }
+
         h1 {
-            font-size: 3rem;
-            line-height: 1.15;
-            color: #111;
-            margin-bottom: 1.5rem;
-            font-weight: 700;
-        }
-        p {
-            font-size: 1.1rem;
-            line-height: 1.7;
-            color: #555;
-            margin-bottom: 2rem;
-        }
-        .cta-btn {
-            display: inline-block;
-            align-self: flex-start; /* Keeps the button from stretching */
-            padding: 0.9rem 2rem;
-            background-color: #111;
-            color: #fff;
-            text-decoration: none;
-            font-weight: 500;
-            border-radius: 4px;
-            transition: background-color 0.2s ease;
-        }
-        .cta-btn:hover {
-            background-color: #333;
+            font-size: 3.5rem;
+            font-weight: 300;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
         }
 
-        /* Responsive Design: Stacks vertically on tablets and mobile phones */
-        @media (max-width: 900px) {
-            .container {
-                flex-direction: column;
-                height: auto;
-            }
-            body, html {
-                overflow: auto; /* Restores scrolling on mobile */
-            }
-            .photo-side {
-                height: 50vh; /* Image takes up half the screen height on mobile */
-                flex: none;
-            }
-            .info-side {
-                height: auto;
-                padding: 3rem 2rem;
-                flex: none;
-            }
-            h1 {
-                font-size: 2.2rem;
-            }
+        .instructor-title {
+            font-size: 1.2rem;
+            font-weight: 400;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        /* Pulsing animation for loading dots */
+        .pulse-dots {
+            display: inline-flex;
+            gap: 6px;
+            align-items: center;
+            vertical-align: middle;
+            margin-left: 8px;
+        }
+
+        .dot {
+            width: 6px;
+            height: 6px;
+            background-color: var(--text-light);
+            border-radius: 50%;
+            animation: pulse 1.5s infinite ease-in-out;
+        }
+
+        .dot:nth-child(2) { animation-delay: 0.2s; }
+        .dot:nth-child(3) { animation-delay: 0.4s; }
+
+        .subtext {
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-weight: 400;
+            letter-spacing: 0.05em;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; transform: scale(0.8); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* Responsive styling for mobile screens */
+        @media (max-width: 600px) {
+            h1 { font-size: 2.5rem; }
+            .instructor-title { font-size: 1rem; margin-bottom: 1.5rem; }
+            .status-tag { font-size: 0.75rem; }
+            .subtext { font-size: 0.9rem; }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <!-- Left Side: Image -->
-        <div class="photo-side">
-            <!-- Replace this URL with your local image file path or web URL -->
-            <img src="15.JPG" alt="Left Side Visual">
-        </div>
+    <!-- Visual pole element -->
+    <div class="visual-pole"></div>
 
-        <!-- Right Side: Information -->
-        <div class="info-side">
-            <span class="category">Pole Dancer</span>
-            <h1>Rebeca Sanchez Soteldo</h1>
-            <p>
-                This is where you place your main copy. The split-screen layout is incredibly effective for landing pages, portfolios, or product showcases because it immediately pairs high-quality imagery with your primary message. 
-            </p>
-            <p>
-                The right-hand container is set to scroll independently if your text content ever exceeds the height of the browser window, ensuring your layout never breaks.
-            </p>
-        </div>
+    <div class="container">
+        <p class="status-tag">Session Intro</p>
+        <h1>Warming Up<div class="pulse-dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div></h1>
+        <p class="instructor-title">with Rebeca Sanchez</p>
+        <p class="subtext">Joint mobilization & core activation. Starting shortly.</p>
     </div>
-</div>
 
 </body>
 </html>
